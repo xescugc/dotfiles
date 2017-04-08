@@ -1,0 +1,51 @@
+[user]
+  name = xescuGC
+  email = xescugil@gmail.com
+[alias]
+  co      =  checkout
+  st      =  status
+  br      =  branch
+  diffc   =  diff --cached
+  ci      =  commit
+  cim     =  commit -m
+  cima    =  commit -a -m
+  cp      =  cherry-pick
+  c       =  cherry
+  cl      =  clone
+  s       =  stash
+  ss      =  stash save
+  sp      =  stash pop
+  sa      =  stash apply
+  sl      =  stash list
+  sc      =  stash clear
+  sd      =  stash drop
+  fo      =  fetch origin
+  addi    =  add --interactive
+  lol     =  log --pretty=oneline --abbrev-commit --graph --decorate
+  hist    =  log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  mylog   =  log --pretty=format:'%h %s [%an]' --graph
+  rb      =  "!sh -c 'git rebase -i HEAD~$1' -"
+  reso    =  reset --soft HEAD^
+  sdiff   =  "!" "git diff && git submodule foreach 'git diff'"
+  spush   =  push --recurse-submodules=on-demand
+  supdate =  submodule update --remote --merge
+  ls-un   =  ls-files --others --exclude-standard
+[core]
+  editor = vim
+  excludesfile = /Users/Xescu/.gitignore_global
+  autocrlf = input
+[branch]
+  autosetupmerge = true
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[push]
+  default = simple
+[color]
+  ui      = auto
+  diff    = auto
+  branch  = auto
+  status  = auto

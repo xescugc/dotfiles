@@ -1,0 +1,189 @@
+" Load Plugins from bundle/ and syntax/ with pathogen
+execute pathogen#infect('bundle/{}', 'syntax/{}')
+" Load helptags for all plugins
+call pathogen#helptags()
+
+set encoding=utf-8
+
+" Filetype plugins enabled
+filetype plugin on
+" Load ident files
+filetype plugin indent on
+
+syntax on
+
+"color railscasts
+color molokai
+"color solarized
+
+" Use Vim setting instead of Vi
+set nocompatible
+
+" Enable Folding with Vim
+set foldenable
+set foldmethod=indent
+set foldlevel=3
+nmap <SPACE> za
+" It's a C-SPACE
+nmap <C-@> zA
+" Very magic mode which acts like egrep
+nnoremap / /\v
+
+" Set to see the unwanted
+set list
+set listchars=tab:>-,trail:.,extends:>
+
+" Omni completion enabled
+set omnifunc=syntaxcomplete#Complete
+"highlight Pmenu ctermbg=gray gui=bold
+
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Set normal config
+set nobackup    " do not keep a backup file, use versions instead
+set history=50  " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set incsearch   " do incremental searching
+set rnu         " set relative number lines BAD PERFORMANCE
+set lazyredraw  " set the redraw interval slower to make the sclro animation faster
+set number      " set number lines
+set scrolloff=5 " number off lines separed of bottom
+set hlsearch 	  " turns on search highlighting
+set title       " Set the $HOME_PATH for the file
+"set cindent	" This turns on C style indentation
+
+" Sessions
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
+
+" Help for :<Tab> autocomplete
+set wildmenu
+set wildmode=list:longest,full
+
+" Spaces instead of tabs
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set ai
+
+" Window Management
+" =============
+" Moving arround
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+" Moving windows
+map <C-R> <C-W>r
+" Resizing
+"map <C-=> <C-W>= " not possible because of: http://stackoverflow.com/a/6184145
+map <C-UP>    2<C-w>+
+map <C-DOWN>  2<C-w>-
+map <C-LEFT>  2<C-w><
+map <C-RIGHT> 2<C-w>>
+
+" Restore cursor to file position in previous editing session
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+" automatically give executable permissions based on file extension
+au BufWritePost *.\(?:sh\|pl\) :silent !chmod a+x <afile>
+
+" tmux configuration to make the arrows work
+if &term =~ '^screen'
+  " tmux will send xterm-style keys when its xterm-keys option is on
+  execute "set <Up>=\e[1;*A"
+  execute "set <Down>=\e[1;*B"
+  execute "set <Right>=\e[1;*C"
+  execute "set <Left>=\e[1;*D"
+endif
+
+" PLUGINS
+
+" Changed fonts for powerline(airline)
+" =====================
+let g:airline_powerline_fonts=1
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='molokai'
+let g:airline#extensions#taboo#enabled = 1
+
+" Taboo
+" =====================
+let g:taboo_tabline = 0
+
+" CtrlP
+" =====================
+nmap ; :CtrlP<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
+" NERD commenter
+" ====================
+map cc <leader>cc
+map cu <leader>cu
+
+" NERD-Tree
+" =====================
+map  <S-L>     :tabnext<CR>
+map  <S-H>     :tabprevious<CR>
+
+map  <C-N>     :NERDTreeToggle<CR>
+
+" VIM JSX
+" =====================
+let g:jsx_ext_required = 0
+
+" Tagbar
+" =====================
+map <C-M> :TagbarToggle<CR>
+
+" Undootree
+" =====================
+nnoremap <C-U> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 4
+
+" Syntastic
+" ====================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl']
+
+" VimGo
+" ===================
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+" Calendar vim
+" ================
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+let g:calendar_first_day="monday"
