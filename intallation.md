@@ -83,6 +83,7 @@ wireless?
 ### Root Pass
 
 `#> passwd`
+
 ## Reboot
 
 `$> umount -R /mnt`
