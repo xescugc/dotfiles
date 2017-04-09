@@ -1,7 +1,8 @@
 #!/bin/bash
+# https://raw.githubusercontent.com/XescuGC/dotfiles/master/mount_arch.sh
 
 confirm() {
-  read -r -p "${1:-Are you sure? [y/N]} " response
+  read -r -p "${1:-Are you sure? } [y/N]" response
   case "$response" in
     [yY][eE][sS]|[yY]) 
       true
@@ -29,16 +30,16 @@ disk=$(choose "Which disk do you want to partitionate? ")
 mem=$(choose "How many memory (in GiB)? (the rest to swap)")
 
 parted $disk mklabel msdos
-parted $disk mkpart primary ext4 0% $(mem)GiB
+parted $disk mkpart primary ext4 0% ${mem}GiB
 parted $disk set 1 boot on
-parted $disk mkpart primary linux-swap $(mem)GiB 100%
+parted $disk mkpart primary linux-swap ${mem}GiB 100%
 parted $disk print
 
 echo "Formatting the partittion"
 
-mkfs.ext4 $(disk)1
-mkswap $(disk)2
-swapon $(disk)2
+mkfs.ext4 ${disk}1
+mkswap ${disk}2
+swapon ${disk}2
 
 echo "Mounting the FS"
 
@@ -66,7 +67,7 @@ hwclock --systohc --utc
 echo "Hostname"
 
 hostname=$(choose "Which is the hostname? ")
-echo $(hostname) > /etc/hostname
+echo $hostname > /etc/hostname
 
 echo "Boot loader"
 
