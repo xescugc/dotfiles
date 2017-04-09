@@ -28,21 +28,21 @@ fdisk -l && free -m
 disk=$(choose "Which disk do you want to partitionate? ")
 mem=$(choose "How many memory (in GiB)? (the rest to swap)")
 
-parted $fdisk mklabel msdos
-parted $fdisk mkpart primary ext4 0% $(mem)GiB
-parted $fdisk set 1 boot on
-parted $fdisk primary linux-swap $(mem)GiB 100%
-parted $fdisk print
+parted $disk mklabel msdos
+parted $disk mkpart primary ext4 0% $(mem)GiB
+parted $disk set 1 boot on
+parted $disk mkpart primary linux-swap $(mem)GiB 100%
+parted $disk print
 
 echo "Formatting the partittion"
 
-mkfs.ext4 /dev/sda1
-mkswap /dev/sda2
-swapon /dev/sda2
+mkfs.ext4 $(disk)1
+mkswap $(disk)2
+swapon $(disk)2
 
 echo "Mounting the FS"
 
-mount /dev/sda1 /mnt
+mount $disk /mnt
 
 echo "Install the base packages"
 
@@ -71,7 +71,7 @@ echo $(hostname) > /etc/hostname
 echo "Boot loader"
 
 pacman -S grub os-prober
-grub-install --recheck --target=i386-pc /dev/sda
+grub-install --recheck --target=i386-pc $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Root Pass"
