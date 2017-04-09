@@ -4,10 +4,11 @@
 confirm() {
   read -r -p "${1:-Are you sure? } [y/N]" response
   case "$response" in
-    [yY][eE][sS]|[yY]) 
+    [yY][eE][sS]|[yY])
       true
       ;;
     *)
+      echo "escaped"
       false
       ;;
   esac
@@ -16,6 +17,11 @@ confirm() {
 choose() {
   read -r -p "${1} " response
   echo $response
+}
+
+printTitle() {
+  echo "############## $1"
+  echo ""
 }
 
 confirm "Setting keymap to ES" && \
@@ -35,47 +41,47 @@ parted $disk set 1 boot on
 parted $disk mkpart primary linux-swap ${mem}GiB 100%
 parted $disk print
 
-echo "Formatting the partittion"
+printTitle "Formatting the partittion"
 
 mkfs.ext4 ${disk}1
 mkswap ${disk}2
 swapon ${disk}2
 
-echo "Mounting the FS"
+printTitle "Mounting the FS"
 
-mount $disk /mnt
+mount ${disk}1 /mnt
 
-echo "Install the base packages"
+printTitle "Install the base packages"
 
 pacstrap /mnt base base-devel
 
-echo "Configure the System"
+printTitle "Configure the System"
 
-echo "Fstab"
+printTitle "Fstab"
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo "Chroot"
+printTitle "Chroot"
 
 arch-chroot /mnt
 
-echo "Timezone"
+printTitle "Timezone"
 
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 hwclock --systohc --utc
 
-echo "Hostname"
+printTitle "Hostname"
 
 hostname=$(choose "Which is the hostname? ")
-echo $hostname > /etc/hostname
+printTitle $hostname > /etc/hostname
 
-echo "Boot loader"
+printTitle "Boot loader"
 
 pacman -S grub os-prober
 grub-install --recheck --target=i386-pc $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo "Root Pass"
+printTitle "Root Pass"
 
 passwd
 
