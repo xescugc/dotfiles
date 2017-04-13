@@ -85,25 +85,22 @@ printTitle "Root Pass"
 
 passwd
 
-echo "
-  To configure the Locale
-  > vi /etc/locale.gen
+#echo "
+  #To configure the Locale
+  #> vi /etc/locale.gen
 
-  Search for 'en_US.UTF-8' and uncomment this one and the others similars.
+  #Search for 'en_US.UTF-8' and uncomment this one and the others similars.
 
-  > locale-gen
-  > echo LANG=en_US.UTF-8 > /etc/locale.conf
-  > export LANG=en_US.UTF-8
-  > echo KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz > /etc/vconsole.conf
-  > export KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz
+  #> locale-gen
+  #> echo LANG=en_US.UTF-8 > /etc/locale.conf
+  #> export LANG=en_US.UTF-8
+  #> echo KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz > /etc/vconsole.conf
+  #> export KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz
 
-  To finish
+  #To finish
 
-  > unmount -R /mnt
-  > reboot
-"
+  #> unmount -R /mnt
+  #> reboot
+#"
 
-echo "You have finish"
-
-
-
+#echo "You have finish"
