@@ -1,0 +1,22 @@
+! Rofi configuration
+rofi.modi: combi
+rofi.combi-modi: window,drun
+
+rofi.color-enabled: true
+rofi.font: Gohu GohuFont Regular 11
+
+!                Background   Foreground  Background Alternate    Highlight Background    Highlight Foreground
+
+rofi.color-window: #101010,     #d0d0d0    
+rofi.color-normal: #101010,     #d0d0d0,    #101010,                #66aa11,                #101010
+rofi.color-active: #101010,     #66aa11,    #101010,                #80ff00,                #101010
+rofi.color-urgent: #101010,     #960050,    #101010,                #ff0090,                #101010
+
+rofi.columns: 3
+rofi.hide-scrollbar: true
+rofi.disable-history: false
+rofi.bw: 1
+rofi.fullscreen: false
+rofi.lines: 8
+rofi.padding: 5
+rofi.separator-style: none

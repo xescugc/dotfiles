@@ -29,8 +29,6 @@ URxvt*color14: #4eb4fa
 URxvt*color15: #d0d0d0
 
 !Font 
-!URxvt*font: xft:RobotoMono:pixelsize=12:antialias=true:hinting=true
 URxvt*font: -gohu-gohufont-medium-r-normal--14-*
-!URxvt*font: GohuGohuFontRegular:pixelsize=14
 URxvt.letterSpace: 1
 
