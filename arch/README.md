@@ -155,6 +155,10 @@ Configuration on the i3 config
 
 `$> pacman -S rofi`
 
+# Other
+
+openssh
+
 # Links
 
 * [Language Toggle](http://docs.slackware.com/howtos:window_managers:keyboard_layout_in_i3)
