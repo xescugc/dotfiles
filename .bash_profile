@@ -16,7 +16,6 @@ export LC_CTYPE="en_US.UTF-8"
 alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
 alias dz='dzil build; cpanm -n *.tar.gz; dzil clean'
 alias ll='ls -lAhG'
-alias docker-cleanup='./.functions/docker-cleanup'
 port() { lsof -n -i:$1 | grep LISTEN; }
 
 # Git automerge
@@ -25,11 +24,11 @@ export GIT_MERGE_AUTOEDIT=no
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias npm-do='PATH=$(npm bin):$PATH'
 
-source ~/perl5/perlbrew/etc/bashrc
-source ~/.profile
+#source ~/perl5/perlbrew/etc/bashrc
+#source ~/.profile
 
 HISTCONTROL=ignoreboth # This option is does the same as the 2 before
 
 # GOLANG
-export GOPATH=$HOME/repos/go_workspace
-export PATH=$PATH:$GOPATH/bin
+#export GOPATH=$HOME/repos/go_workspace
+#export PATH=$PATH:$GOPATH/bin
