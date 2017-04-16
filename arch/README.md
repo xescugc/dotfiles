@@ -96,6 +96,10 @@ wireless?
 `$> systemctl start dhcpcd@enp0s3`
 `$> systemctl enable dhcpcd@enp0s3`
 
+## Install wifi-menu dependencies
+
+`$> pacman -S dialog wpa_supplicant`
+
 ## Create users
 
 `$> useradd -m -g users -s /bin/bash xescugc`
@@ -155,9 +159,6 @@ Configuration on the i3 config
 
 `$> pacman -S rofi`
 
-# Other
-
-openssh
 
 # Links
 
