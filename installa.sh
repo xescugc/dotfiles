@@ -17,7 +17,7 @@ echo ""
 if confirm "Installing needed packages?"
 then
   sudo pacman -S i3 xorg xorg-xinit i3status rofi rxvt-unicode i3lock \
-    openssh ranger vim
+    openssh ranger vim alsa-utils
 
   yaourt -S gohufont xbanish
 fi
@@ -32,6 +32,7 @@ then
   ln -svi -T $HOME/dotfiles/i3/config $HOME/.config/i3/config
   ln -svi -T $HOME/dotfiles/i3status/config $HOME/.config/i3status/config
   ln -svi -T $HOME/dotfiles/rofi/config $HOME/.config/rofi/config
+  ln -svi -T $HOME/dotfiles/.asoundrc $HOME/.asoundrc
   ln -svi $HOME/dotfiles/vim $HOME/.vim
 fi
 

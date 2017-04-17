@@ -15,6 +15,7 @@ export PATH="$PATH:$HOME/bin"
 # Locale
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
+export EDITOR="vim"
 
 # Git automerge
 export GIT_MERGE_AUTOEDIT=no
