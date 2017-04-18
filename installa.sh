@@ -17,7 +17,7 @@ echo ""
 if confirm "Installing needed packages?"
 then
   sudo pacman -S i3 xorg xorg-xinit i3status rofi rxvt-unicode i3lock \
-    openssh ranger vim alsa-utils
+    openssh ranger vim alsa-utils arandr
 
   yaourt -S gohufont xbanish
 fi
