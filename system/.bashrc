@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
 ################
 # EXPORTS
 ################
@@ -16,9 +20,14 @@ export PATH="$PATH:$HOME/bin"
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 export EDITOR="vim"
+export BROWSER="firefox"
 
 # Git automerge
 export GIT_MERGE_AUTOEDIT=no
+
+export POMPT_DIRTRIM=2
+
+#export PATH="$PATH:$HOME/perl5"
 
 # GOLANG
 #export GOPATH=$HOME/repos/go_workspace
@@ -51,7 +60,12 @@ alias npm-do='PATH=$(npm bin):$PATH'
 
 port() { lsof -n -i:$1 | grep LISTEN; }
 
-#source ~/perl5/perlbrew/etc/bashrc
+
+###############
+# SOURCES
+###############
+
+source ~/perl5/perlbrew/etc/bashrc
 #source ~/.profile
 
 
