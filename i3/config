@@ -131,6 +131,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 for_window[class="(?i)pcmanfm"] floating enabled
 for_window[class="(?i)gpicview"] floating enabled
 for_window[class="(?i)arandr"] floating enabled
+for_window[class="(?i)pavucontrol"] floating enabled
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -177,17 +178,20 @@ bindsym $mod+Escape mode "$mode_system"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+  #status_command exec ~/.bin/my_i3status
+  #status_command ~/.bin/my_i3status
+  #status_command i3status | ~/.bin/my_i3status.pl
   status_command i3status
-    colors {
-      background #303030
-        statusline #d0d0d0
-        separator #d0d0d0
+  colors {
+    background #303030
+      statusline #d0d0d0
+      separator #d0d0d0
 
-        #<colorclass>      <border> <background>  <text>
-        focused_workspace  #80ff00    #80ff00    #101010
-        active_workspace   #66aa11    #66aa11    #101010
-        inactive_workspace #303030    #303030    #d0d0d0
-        urgent_workspace   #960050    #960050    #d0d0d0
-        binding_mode       #960050    #960050    #d0d0d0
-    }
+      #<colorclass>      <border> <background>  <text>
+      focused_workspace  #80ff00    #80ff00    #101010
+      active_workspace   #66aa11    #66aa11    #101010
+      inactive_workspace #303030    #303030    #d0d0d0
+      urgent_workspace   #960050    #960050    #d0d0d0
+      binding_mode       #960050    #960050    #d0d0d0
+  }
 }

@@ -18,7 +18,8 @@ if confirm "Installing needed packages?"
 then
   sudo pacman -S i3 xorg xorg-xinit i3status rofi rxvt-unicode i3lock \
     openssh ranger vim arandr wget openvpn bash-completion \
-    gpicview-gtk3 pcmanfm-gtk3 dunst pulseaudio pavucontrol
+    gpicview-gtk3 pcmanfm-gtk3 dunst pulseaudio pavucontrol \
+    bluez bluez-utils pulseaudio-bluetooth
 
   yaourt -S gohufont xbanish
 fi
