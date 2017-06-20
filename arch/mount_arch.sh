@@ -24,9 +24,6 @@ printTitle() {
   echo ""
 }
 
-confirm "Setting keymap to ES" && \
-  loadkeys /usr/share/kbd/keymaps/i386/qwerty/es.map.gz
-
 confirm "Setting timezone to Europe/Madrid" && \
   timedatectl set-ntp true && \
   timedatectl set-timezone Europe/Madrid
