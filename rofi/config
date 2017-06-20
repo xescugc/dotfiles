@@ -1,6 +1,6 @@
 ! Rofi configuration
 rofi.modi: combi
-rofi.combi-modi: window,drun
+rofi.combi-modi: window,drun,run
 
 rofi.color-enabled: true
 rofi.font: Gohu GohuFont Regular 11

@@ -29,6 +29,7 @@ URxvt*color14: #4eb4fa
 URxvt*color15: #d0d0d0
 
 !Font 
-URxvt*font: -gohu-gohufont-medium-r-normal--14-*
+URxvt.font: -gohu-gohufont-medium-r-normal--14-*,-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+!URxvt.font: xft:GohuFont Nerd Font
 URxvt.letterSpace: 1
 

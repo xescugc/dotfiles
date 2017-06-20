@@ -20,6 +20,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec urxvt -name Furxvt
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -34,10 +36,10 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -119,10 +121,17 @@ hide_edge_borders both
 focus_follows_mouse yes
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle # toggle microphone
+bindsym XF86AudioRaiseVolume exec volume raise
+bindsym $mod+Up exec volume raise
+bindsym XF86AudioLowerVolume exec volume lower
+bindsym $mod+Down exec volume lower
+bindsym XF86AudioMute exec volume mute
+bindsym XF86AudioMicMute exec volume mute-mic
+
+# Music Control (playerctl)
+bindsym $mod+p exec playerctl play-pause
+bindsym $mod+Right exec playerctl next
+bindsym $mod+Left exec playerctl previous
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
@@ -132,6 +141,12 @@ for_window[class="(?i)pcmanfm"] floating enabled
 for_window[class="(?i)gpicview"] floating enabled
 for_window[class="(?i)arandr"] floating enabled
 for_window[class="(?i)pavucontrol"] floating enabled
+for_window[class="(?i)runescape*"] floating enabled
+for_window[class="(?i)libreoffice"] floating enabled
+for_window[class="(?i)xfontsel"] floating enabled
+for_window[class="(?i)galculator"] floating enabled
+for_window[instance="(?i)furxvt"] floating enabled
+for_window[instance="(?i)msgcompose"] floating enabled
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -180,8 +195,9 @@ bindsym $mod+Escape mode "$mode_system"
 bar {
   #status_command exec ~/.bin/my_i3status
   #status_command ~/.bin/my_i3status
-  #status_command i3status | ~/.bin/my_i3status.pl
-  status_command i3status
+  status_command i3status | ~/.bin/my_i3status.pl
+  #status_command i3status
+  tray_output none
   colors {
     background #303030
       statusline #d0d0d0

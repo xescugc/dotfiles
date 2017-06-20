@@ -14,7 +14,7 @@
 ################
 
 # Local bin
-export PATH="$PATH:$HOME/bin"
+export PATH="$HOME/.bin:$PATH"
 
 # Locale
 export LANG=en_US.UTF-8
@@ -25,13 +25,14 @@ export BROWSER="firefox"
 # Git automerge
 export GIT_MERGE_AUTOEDIT=no
 
-export POMPT_DIRTRIM=2
-
-#export PATH="$PATH:$HOME/perl5"
+export PROMPT_DIRTRIM=3
 
 # GOLANG
-#export GOPATH=$HOME/repos/go_workspace
-#export PATH=$PATH:$GOPATH/bin
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+# Ruby
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 
 ################
@@ -46,7 +47,6 @@ HISTCONTROL=ignoreboth # This option is does the same as the 2 before
 # ALIAS
 ################
 
-alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
 alias dz='dzil build; cpanm -n *.tar.gz; dzil clean'
 alias ll='ls -lAhG --color=auto'
 alias ls='ls --color=auto'
@@ -69,3 +69,4 @@ source ~/perl5/perlbrew/etc/bashrc
 #source ~/.profile
 
 
+source /usr/share/nvm/init-nvm.sh

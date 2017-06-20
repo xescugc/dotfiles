@@ -1,0 +1,38 @@
+#!/bin/bash
+
+notify() {
+  notify-send -u low -t 1000 -a Volume "$1"
+}
+
+getCurrentVolume() {
+  response=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+  echo $response
+}
+
+getMute() {
+  response=$(pactl list sinks | grep [[:space:]]Mute:)
+  echo $response
+}
+
+case "$1" in
+  raise)
+    pactl set-sink-volume 0 +5%
+    notify "Current volume is: $(getCurrentVolume)"
+    ;;
+  lower)
+    pactl set-sink-volume 0 -5%
+    notify "Current volume is: $(getCurrentVolume)"
+    ;;
+  mute)
+    pactl set-sink-mute 0 toggle
+    notify "Current volume is: $(getMute)"
+    ;;
+  mute-mic)
+    pactl set-source-mute 1 toggle
+    ;;
+  *)
+    echo "Usage: $0 {raise|lower}"
+    exit 2
+esac
+
+exit 0

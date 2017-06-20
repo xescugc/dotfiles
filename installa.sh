@@ -18,10 +18,15 @@ if confirm "Installing needed packages?"
 then
   sudo pacman -S i3 xorg xorg-xinit i3status rofi rxvt-unicode i3lock \
     openssh ranger vim arandr wget openvpn bash-completion \
-    gpicview-gtk3 pcmanfm-gtk3 dunst pulseaudio pavucontrol \
-    bluez bluez-utils pulseaudio-bluetooth
+    gpicview pcmanfm dunst pulseaudio pavucontrol \
+    bluez bluez-utils pulseaudio-bluetooth \
+    vagrant ansible virtualbox nfs-utils \
+    unzip playerctl \
+    galculator chromium thunderbird \
+    firefox go xf86-video-intel
 
-  yaourt -S gohufont xbanish
+  yaourt -S gohufont xbanish clipit rambox-bin
+  # It may fail for the perl XML::Parser missing
 fi
 
 if confirm "Create symlinks for the configuration?"
@@ -39,6 +44,7 @@ then
   ln -svi -T $HOME/dotfiles/dunst/dunstrc $HOME/.config/dunst/dunstrc
   ln -svi -T $HOME/dotfiles/re.pl/repl.rc $HOME/.re.pl/repl.rc
   ln -svi $HOME/dotfiles/vim $HOME/.vim
+  ln -svi $HOME/dotfiles/bin $HOME/.bin
 fi
 
 if confirm "Install Vim Plugins? (with Vundle)"

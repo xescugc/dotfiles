@@ -8,10 +8,15 @@ nnoremap h 2h
 nnoremap l 2l
 
 "" show only the tab bar
-set gui=tabs
+set gui=nonavigation
 
-no sa :set gui=none<CR>
-no sA :set gui=tabs<CR>
+" don't focus any "input" elements automatically when open pages.
+set focuscontent
+
+noremap <C-h> :set gui=none<CR> 
+
+" don't animate tab-bar when switch to fullscreen
+set! browser.fullscreen.animateUp=0
 
 " default search/suggest engine: duckduckgo
 " set defsearch=duckduckgo
