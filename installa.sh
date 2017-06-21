@@ -43,8 +43,8 @@ then
   mkdir -p $HOME/.re.pl && ln -svi -T $HOME/dotfiles/re.pl/repl.rc $HOME/.re.pl/repl.rc
   ln -svi -T $HOME/dotfiles/.vimperatorrc $HOME/.vimperatorrc
   ln -svi -T $HOME/dotfiles/tmux/.tmux.conf $HOME/.tmux.conf
-  ln -svi $HOME/dotfiles/vim $HOME/.vim
-  ln -svi $HOME/dotfiles/bin $HOME/.bin
+  ln -svi $HOME/dotfiles/.vim $HOME
+  ln -svi $HOME/dotfiles/.bin $HOME
 fi
 
 if confirm "Install Vim Plugins? (with Vundle)"
