@@ -32,7 +32,7 @@ export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # Ruby
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+# export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 
 ################
@@ -65,8 +65,7 @@ port() { lsof -n -i:$1 | grep LISTEN; }
 # SOURCES
 ###############
 
-source ~/perl5/perlbrew/etc/bashrc
-#source ~/.profile
+#source ~/perl5/perlbrew/etc/bashrc
 
 
-source /usr/share/nvm/init-nvm.sh
+#source /usr/share/nvm/init-nvm.sh
