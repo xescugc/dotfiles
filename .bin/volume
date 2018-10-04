@@ -16,19 +16,31 @@ getMute() {
 
 case "$1" in
   raise)
-    pactl set-sink-volume 0 +5%
+    for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+    do
+      pactl set-sink-volume $SINK +5%
+    done
     notify "Current volume is: $(getCurrentVolume)"
     ;;
   lower)
-    pactl set-sink-volume 0 -5%
+    for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+    do
+      pactl set-sink-volume $SINK -5%
+    done
     notify "Current volume is: $(getCurrentVolume)"
     ;;
   mute)
-    pactl set-sink-mute 0 toggle
+    for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+    do
+      pactl set-sink-mute $SINK toggle
+    done
     notify "Current volume is: $(getMute)"
     ;;
   mute-mic)
-    pactl set-source-mute 1 toggle
+    for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+    do
+      pactl set-source-mute $SINK toggle
+    done
     ;;
   *)
     echo "Usage: $0 {raise|lower}"
