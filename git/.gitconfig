@@ -1,5 +1,5 @@
 [user]
-  name = xescuGC
+  name = xescugc
   email = xescugil@gmail.com
 [alias]
   co      =  checkout
@@ -35,7 +35,8 @@
   excludesfile = /Users/Xescu/.gitignore_global
   autocrlf = input
 [branch]
-  autosetupmerge = true
+  autosetupmerge = always
+  autosetuprebase = always
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path = 

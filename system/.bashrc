@@ -29,6 +29,7 @@ export PROMPT_DIRTRIM=3
 
 # GOLANG
 export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH/bin:$PATH"
 
 # Ruby
@@ -53,14 +54,24 @@ alias ls='ls --color=auto'
 
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias npm-do='PATH=$(npm bin):$PATH'
+alias xclip='xclip -selection c'
+#https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+alias drmi='docker rmi $(docker images -f dangling=true -q)'
+alias dc='docker-compose'
 
 ################
 # FUNCTIONS
 ################
 
 port() { lsof -n -i:$1 | grep LISTEN; }
+wp(){
+    start=$(date +%s)
+    "$@"
+    [ $(($(date +%s) - start)) -le 15 ] || notify-send "Notification" "Long\
+ running command \"$(echo $@)\" took $(($(date +%s) - start)) seconds to finish" -t 20000
+}
 
-
+pastefile() { curl -F file=@"$1" https://pastefile-owl.cycloid.io; }
 ###############
 # SOURCES
 ###############

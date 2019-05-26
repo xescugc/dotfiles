@@ -29,7 +29,11 @@ URxvt*color14: #4eb4fa
 URxvt*color15: #d0d0d0
 
 !Font 
-URxvt.font: -gohu-gohufont-medium-r-normal--14-*,-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt.font: -gohu-gohufont-medium-r-normal--14-*
+!URxvt.font: xft:Unifont:style=Sans-Serif:pixelsize=10
 !URxvt.font: xft:GohuFont Nerd Font
+!URxvt.font: xft:Tamsyn:style=Regular:pixelsize=13
+!URxvt.font: xft:Terminus:style=Regular:pixelsize=14
+!urxvt.font: xft:Terminus:pixelsize=12
 URxvt.letterSpace: 1
 

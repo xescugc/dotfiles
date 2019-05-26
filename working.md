@@ -1,4 +1,4 @@
-# Soud
+# Sound
 
 https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Running/
 

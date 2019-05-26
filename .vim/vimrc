@@ -31,6 +31,7 @@ Plugin 'kshenoy/vim-signature'
 
 " Syntax
 Plugin 'tpope/vim-fugitive'
+Plugin 'posva/vim-vue'
 Plugin 'vim-perl/vim-perl'
 Plugin 'othree/html5.vim'
 Plugin 'cakebaker/scss-syntax.vim'

@@ -20,21 +20,24 @@ case "$1" in
     do
       pactl set-sink-volume $SINK +5%
     done
-    notify "Current volume is: $(getCurrentVolume)"
+    notify "Volume increased"
+    #notify "Current volume is: $(getCurrentVolume)"
     ;;
   lower)
     for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
     do
       pactl set-sink-volume $SINK -5%
     done
-    notify "Current volume is: $(getCurrentVolume)"
+    #notify "Current volume is: $(getCurrentVolume)"
+    notify "Volume lowered"
     ;;
   mute)
     for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
     do
       pactl set-sink-mute $SINK toggle
     done
-    notify "Current volume is: $(getMute)"
+    #notify "Current volume is: $(getMute)"
+    notify "Volume mute"
     ;;
   mute-mic)
     for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
