@@ -48,6 +48,11 @@ printTitle "Mounting the FS"
 
 mount ${disk}1 /mnt
 
+printTitle "Sort and update the mirrors"
+
+curl https://www.askapache.com/s/u.askapache.com/2013/05/reflector.txt > reflector.sh
+bash reflector.sh | sudo tee /etc/pacman.d/mirrorlist
+
 printTitle "Install the base packages"
 
 pacstrap /mnt base base-devel
