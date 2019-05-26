@@ -1,6 +1,8 @@
 #!/bin/bash
 # https://raw.githubusercontent.com/XescuGC/dotfiles/master/mount_arch.sh
 
+set -e
+
 confirm() {
   read -r -p "${1:-Are you sure? } [y/N]" response
   case "$response" in
@@ -40,13 +42,13 @@ parted $disk print
 
 printTitle "Formatting the partittion"
 
-mkfs.ext4 ${disk}1
-mkswap ${disk}2
-swapon ${disk}2
+mkfs.ext4 ${disk}p1
+mkswap ${disk}p2
+swapon ${disk}p2
 
 printTitle "Mounting the FS"
 
-mount ${disk}1 /mnt
+mount ${disk}p1 /mnt
 
 printTitle "Sort and update the mirrors"
 
@@ -101,7 +103,8 @@ passwd
 
   #To finish
 
-  #> unmount -R /mnt
+  #> exit
+  #> umount -R /mnt
   #> reboot
 #"
 
