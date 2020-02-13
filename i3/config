@@ -29,6 +29,8 @@ bindsym $mod+Shift+Return exec urxvt -name Furxvt
 # kill focused window
 bindsym $mod+Shift+q kill
 
+bindsym $mod+Control+Shift+k focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, kill
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show
 

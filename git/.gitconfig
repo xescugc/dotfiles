@@ -7,8 +7,10 @@
   br      =  branch
   diffc   =  diff --cached
   ci      =  commit
+  cif     =  commit --fixup
   cim     =  commit -m
   cima    =  commit -a -m
+  ciaf    =  commit -a --fixup
   cp      =  cherry-pick
   c       =  cherry
   cl      =  clone
@@ -24,12 +26,15 @@
   lol     =  log --pretty=oneline --abbrev-commit --graph --decorate
   hist    =  log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   mylog   =  log --pretty=format:'%h %s [%an]' --graph
-  rb      =  "!sh -c 'git rebase -i HEAD~$1' -"
+  rb      =  "!sh -c 'git rebase -i --autosquash HEAD~$1' -"
+  rbc     =  !git rebase -i --autosquash HEAD~$(git count)
   reso    =  reset --soft HEAD^
   sdiff   =  "!" "git diff && git submodule foreach 'git diff'"
   spush   =  push --recurse-submodules=on-demand
   supdate =  submodule update --remote --merge
   ls-un   =  ls-files --others --exclude-standard
+  count   =  rev-list --count HEAD ^origin
+  loc     =  "!" "git lol -$(git count)"
 [core]
   editor = vim
   excludesfile = /Users/Xescu/.gitignore_global

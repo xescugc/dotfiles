@@ -1,5 +1,6 @@
 [global]
-    font = Gohu GohuFont Regular 11
+    # font = Gohu GohuFont Regular 11
+    font = gohu regular 11
     # allow a small subset of html markup:
     # <b>bold</b>
     # <i>italic</i>

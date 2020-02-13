@@ -25,16 +25,29 @@ then
     firefox go xf86-video-intel scrot \
     openssl docker docker-compose xclip \
     tmux ack ctags net-tools transmission-gtk \
-    vlc xarchiver
+    vlc xarchiver bzr vault zip jq gvfs
 
   # It may fail for the perl XML::Parser missing
-  yaourt -S gohufont xbanish clipit rambox-bin siji-git
+  yaourt -S gohufont xbanish clipit rambox-bin siji-git spotify
+
+  cpan JSON
 
   # For the scrot alias on i3
   mkdir $HOME/screenshoots
 
   gpasswd -a xescugc docker
   newgrp docker
+
+  # Allow to run Docker commands without root
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+
+  # Enable docker start when the system starts
+  sudo systemctl enable docker
+
+  # It's used on the script inside i3 config
+  # when a screenshot is taken
+  mkdir screenshoots
 fi
 
 if confirm "Create symlinks for the configuration?"

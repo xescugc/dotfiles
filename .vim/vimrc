@@ -28,6 +28,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'diepm/vim-rest-console'
 Plugin 'kshenoy/vim-signature'
+Plugin 'airblade/vim-gitgutter'
 
 " Syntax
 Plugin 'tpope/vim-fugitive'
@@ -68,6 +69,9 @@ nmap <C-@> zA
 " Very magic mode which acts like egrep
 nnoremap / /\v
 
+" Directly format JSON
+nmap =j :%!python -m json.tool<CR>
+
 " Set to see the unwanted
 set list
 set listchars=tab:>-,trail:.,extends:>
@@ -107,6 +111,9 @@ set shiftwidth=2
 set expandtab
 set ai
 
+" For GitGutter showitn fast icons
+set updatetime=100
+
 " Window Management
 " =============
 " Moving arround
@@ -122,6 +129,12 @@ map <C-UP>    2<C-w>+
 map <C-DOWN>  2<C-w>-
 map <C-LEFT>  2<C-w><
 map <C-RIGHT> 2<C-w>>
+
+" New line below without insert mode with ENTER+SHIFT
+" TODO: S-ENTER does not work
+"nmap <S-Enter> O<Esc>
+"nmap <CR> o<Esc>
+
 
 " Restore cursor to file position in previous editing session
 function! ResCur()
@@ -194,6 +207,7 @@ let g:jsx_ext_required = 0
 
 " Tagbar
 " =====================
+"map <Tab> :TagbarToggle<CR>
 map <C-M> :TagbarToggle<CR>
 
 " Undootree
@@ -224,3 +238,4 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+

@@ -37,3 +37,6 @@ URxvt.font: -gohu-gohufont-medium-r-normal--14-*
 !urxvt.font: xft:Terminus:pixelsize=12
 URxvt.letterSpace: 1
 
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1

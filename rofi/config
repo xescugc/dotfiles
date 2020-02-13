@@ -3,7 +3,8 @@ rofi.modi: combi
 rofi.combi-modi: window,drun,run
 
 rofi.color-enabled: true
-rofi.font: Gohu GohuFont Regular 11
+rofi.font: gohu regular 11
+
 
 !                Background   Foreground  Background Alternate    Highlight Background    Highlight Foreground
 

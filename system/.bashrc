@@ -24,6 +24,7 @@ export BROWSER="firefox"
 
 # Git automerge
 export GIT_MERGE_AUTOEDIT=no
+export GIT_TERMINAL_PROMPT=1
 
 export PROMPT_DIRTRIM=3
 
@@ -58,6 +59,7 @@ alias xclip='xclip -selection c'
 #https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
 alias drmi='docker rmi $(docker images -f dangling=true -q)'
 alias dc='docker-compose'
+alias st="tmux new-session -n cmd\; new-window -n code \"/bin/sh -c 'vim +:NERDTree; exec bash'\"\; new-window -n git\; select-window -t 1 \; attach"
 
 ################
 # FUNCTIONS
@@ -80,3 +82,9 @@ pastefile() { curl -F file=@"$1" https://pastefile-owl.cycloid.io; }
 
 
 #source /usr/share/nvm/init-nvm.sh
+
+#PATH="/home/xescugc/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/home/xescugc/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/home/xescugc/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/home/xescugc/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/xescugc/perl5"; export PERL_MM_OPT;
