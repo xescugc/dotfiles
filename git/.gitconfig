@@ -33,8 +33,11 @@
   spush   =  push --recurse-submodules=on-demand
   supdate =  submodule update --remote --merge
   ls-un   =  ls-files --others --exclude-standard
-  count   =  rev-list --count HEAD ^origin
+  count   =  "!" "git rev-list --count HEAD ^$(git tracking)"
   loc     =  "!" "git lol -$(git count)"
+  tracking=  "!" "git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)"
+   ;fix    = "!f() { ${EDITOR} `git diff --name-only | uniq`; }; f"
+   fix    = "!f() { vim -p `git diff --name-only | uniq`; }; f"
 [core]
   editor = vim
   excludesfile = /Users/Xescu/.gitignore_global
@@ -52,3 +55,5 @@
   diff    = auto
   branch  = auto
   status  = auto
+[http]
+	cookiefile = /home/xescugc/.gitcookies

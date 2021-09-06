@@ -60,7 +60,6 @@ alias xclip='xclip -selection c'
 alias drmi='docker rmi $(docker images -f dangling=true -q)'
 alias dc='docker-compose'
 alias st="tmux new-session -n cmd\; new-window -n code \"/bin/sh -c 'vim +:NERDTree; exec bash'\"\; new-window -n git\; select-window -t 1 \; attach"
-
 ################
 # FUNCTIONS
 ################
@@ -73,7 +72,19 @@ wp(){
  running command \"$(echo $@)\" took $(($(date +%s) - start)) seconds to finish" -t 20000
 }
 
-pastefile() { curl -F file=@"$1" https://pastefile-owl.cycloid.io; }
+pastefile() { curl -F file=@"$1" https://paste.owl.cycloid.io; }
+
+function go() {
+  case $* in
+    doc* )
+      shift 1
+      GO111MODULE=auto command go doc "$@"
+      ;;
+    * )
+      command go "$@"
+      ;;
+  esac
+}
 ###############
 # SOURCES
 ###############

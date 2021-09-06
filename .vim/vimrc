@@ -29,6 +29,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'diepm/vim-rest-console'
 Plugin 'kshenoy/vim-signature'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Chiel92/vim-autoformat'
 
 " Syntax
 Plugin 'tpope/vim-fugitive'
@@ -42,6 +43,8 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'elzr/vim-json'
 Plugin 'mxw/vim-jsx'
+Plugin 'tsandall/vim-rego'
+Plugin 'hashivim/vim-terraform'
 
 call vundle#end()
 
@@ -90,12 +93,13 @@ set ruler       " show the cursor position all the time
 set showcmd     " display incomplete commands
 set incsearch   " do incremental searching
 set rnu         " set relative number lines BAD PERFORMANCE
-set lazyredraw  " set the redraw interval slower to make the sclro animation faster
+set lazyredraw  " set the redraw interval slower to make the scroll animation faster
 set number      " set number lines
 set scrolloff=5 " number off lines separed of bottom
 set hlsearch 	  " turns on search highlighting
 set title       " Set the $HOME_PATH for the file
 "set cindent	" This turns on C style indentation
+set tabpagemax=50 " Maximum number of tab pages that can be opened from the command line
 
 " Sessions
 set ssop-=options    " do not store global and local values in a session
@@ -114,9 +118,12 @@ set ai
 " For GitGutter showitn fast icons
 set updatetime=100
 
+set spell spelllang=en_us
+set spellfile=~/.vim/spell/en.utf-8.add
+
 " Window Management
 " =============
-" Moving arround
+" Moving around
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
@@ -239,3 +246,15 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 
+" Rego
+" ===================
+let g:formatdef_rego = '"opa fmt"'
+let g:formatters_rego = ['rego']
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+au BufWritePre *.rego Autoformat
+
+" Terraform
+" ==================
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1

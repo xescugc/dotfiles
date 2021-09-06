@@ -99,6 +99,8 @@
     dmenu = /usr/bin/dmenu -p dunst:
     # browser for opening urls in context menu
     browser = /usr/bin/firefox -new-tab
+
+    max_icon_size = 50
 [frame]
     width = 1
     color = "#101010"

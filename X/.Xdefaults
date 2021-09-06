@@ -28,8 +28,10 @@ URxvt*color13: #bb88dd
 URxvt*color14: #4eb4fa
 URxvt*color15: #d0d0d0
 
-!Font 
+! If it's not found run 'xset fp rehash' after installing
 URxvt.font: -gohu-gohufont-medium-r-normal--14-*
+!URxvt.font: xft:GohuFont:style=Normal:pixelsize=14
+!URxvt.font: xft:Gohu GohuFont:style=Regular:pixelsize=14
 !URxvt.font: xft:Unifont:style=Sans-Serif:pixelsize=10
 !URxvt.font: xft:GohuFont Nerd Font
 !URxvt.font: xft:Tamsyn:style=Regular:pixelsize=13
