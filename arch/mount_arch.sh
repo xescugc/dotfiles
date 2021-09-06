@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://raw.githubusercontent.com/XescuGC/dotfiles/master/mount_arch.sh
+# https://raw.githubusercontent.com/xescugc/dotfiles/master/arch/mount_arch.sh
 
 set -e
 
@@ -35,8 +35,8 @@ confirm "Setting timezone to Europe/Madrid" && \
   timedatectl set-timezone Europe/Madrid
 
 fdisk -l && free -m
-disk=$(choose "Which disk do you want to partitionate? ")
-mem=$(choose "How many memory (in GiB)? (the rest to swap)")
+disk=$(choose "Which disk do you want to partitionate? (Ex: nvme0n1) ")
+mem=$(choose "How many memory (in GiB) the rest to swap? (Ex: 400) ")
 
 parted $disk mklabel msdos
 parted $disk mkpart primary ext4 0% ${mem}GiB
@@ -79,7 +79,7 @@ archChroot hwclock --systohc --utc
 printTitle "Hostname"
 
 hostname=$(choose "Which is the hostname? ")
-archChroot $hostname > /etc/hostname
+archChroot echo $hostname > /etc/hostname
 
 printTitle "Boot loader"
 
@@ -91,7 +91,7 @@ printTitle "Root Pass"
 
 archChroot passwd
 
-archChroot cat "
+archChroot echo "
 en_US.UTF-8 UTF-8
 en_US ISO-8859-1
 " > /etc/locale.gen
