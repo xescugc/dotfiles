@@ -35,7 +35,7 @@ confirm "Setting timezone to Europe/Madrid" && \
   timedatectl set-timezone Europe/Madrid
 
 fdisk -l && free -m
-disk=$(choose "Which disk do you want to partitionate? (Ex: nvme0n1) ")
+disk=$(choose "Which disk do you want to partitionate? (Ex: /dev/nvme0n1) ")
 mem=$(choose "How many memory (in GiB) the rest to swap? (Ex: 400) ")
 
 parted $disk mklabel msdos
@@ -44,7 +44,7 @@ parted $disk set 1 boot on
 parted $disk mkpart primary linux-swap ${mem}GiB 100%
 parted $disk print
 
-printTitle "Formatting the partittion"
+printTitle "Formatting the partition"
 
 mkfs.ext4 ${disk}p1
 mkswap ${disk}p2
