@@ -26,6 +26,10 @@ printTitle() {
   echo ""
 }
 
+archChroot() {
+  command arch-chroot /mnt $@
+}
+
 confirm "Setting timezone to Europe/Madrid" && \
   timedatectl set-ntp true && \
   timedatectl set-timezone Europe/Madrid
@@ -67,45 +71,40 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 printTitle "Chroot"
 
-arch-chroot /mnt
-
 printTitle "Timezone"
 
-ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
-hwclock --systohc --utc
+archChroot ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+archChroot hwclock --systohc --utc
 
 printTitle "Hostname"
 
 hostname=$(choose "Which is the hostname? ")
-printTitle $hostname > /etc/hostname
+archChroot $hostname > /etc/hostname
 
 printTitle "Boot loader"
 
-pacman -S grub os-prober
-grub-install --recheck --target=i386-pc $disk
-grub-mkconfig -o /boot/grub/grub.cfg
+archChroot pacman -S grub os-prober
+archChroot grub-install --recheck --target=i386-pc $disk
+archChroot grub-mkconfig -o /boot/grub/grub.cfg
 
 printTitle "Root Pass"
 
-passwd
+archChroot passwd
 
-#echo "
-  #To configure the Locale
-  #> vi /etc/locale.gen
+archChroot cat "
+en_US.UTF-8 UTF-8
+en_US ISO-8859-1
+" > /etc/locale.gen
 
-  #Search for 'en_US.UTF-8' and uncomment this one and the others similars.
+printTitle "Configuring Locale"
 
-  #> locale-gen
-  #> echo LANG=en_US.UTF-8 > /etc/locale.conf
-  #> export LANG=en_US.UTF-8
-  #> echo KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz > /etc/vconsole.conf
-  #> export KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz
+archChroot locale-gen
+archChroot echo LANG=en_US.UTF-8 > /etc/locale.conf
+archChroot export LANG=en_US.UTF-8
+archChroot echo KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz > /etc/vconsole.conf
+archChroot export KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz
 
-  #To finish
+umount -R /mnt
+reboot
 
-  #> exit
-  #> umount -R /mnt
-  #> reboot
-#"
-
-#echo "You have finish"
+echo "You have finished"

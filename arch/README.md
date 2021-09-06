@@ -117,49 +117,6 @@ Exit and login to the new user, to test if it works run on the new user
 
 `$> sudo pacman -Sy`
 
-## YAOURT
-
-`$> pacman -S git`
-`$> git clone https://aur.archlinux.org/package-query`
-`$> cd package-query`
-`$> makepkg -si`
-`$> cd`
-`$> git clone https://aur.archlinux.org/yaourt.git`
-`$> cd yaourt`
-`$> mkconfig -si`
-
-## i3
-
-`$> pacman -S i3 dmenu xorg xorg-xinit`i3status
-
-## rxvt-unicode
-
-`$> pacman -S rxvt-unicode`
-
-# .xinitrc
-
-```
-#! /bin/bash
-setxkbmap es
-exec i3
-```
-
-
-# Font
-
-`$> yaourt -S ttf-roboto-mono`
-
-# i3lock
-
-`$> pacman -S i3loc`
-
-Configuration on the i3 config
-
-# rofi
-
-`$> pacman -S rofi`
-
-
 # Links
 
 * [Language Toggle](http://docs.slackware.com/howtos:window_managers:keyboard_layout_in_i3)

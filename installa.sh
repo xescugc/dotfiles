@@ -14,21 +14,30 @@ confirm() {
 
 echo ""
 
+echo "Installing YAY"
+
+sudo pacman -Syyu
+sudo pacman -S git
+cd /tmp
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
 if confirm "Installing needed packages?"
 then
-  sudo pacman -S i3 xorg xorg-xinit i3status rofi rxvt-unicode i3lock \
-    openssh ranger vim arandr wget openvpn bash-completion \
+  yay -S i3 xorg xorg-xinit i3status rofi rxvt-unicode i3lock \
+    openssh vim arandr wget openvpn bash-completion \
     gpicview pcmanfm dunst pulseaudio pavucontrol \
     bluez bluez-utils pulseaudio-bluetooth \
     unzip playerctl \
-    galculator chromium thunderbird \
+    galculator chromium \
     firefox go xf86-video-intel scrot \
     openssl docker docker-compose xclip \
     tmux ack ctags net-tools transmission-gtk \
     vlc xarchiver bzr vault zip jq gvfs
 
   # It may fail for the perl XML::Parser missing
-  yaourt -S gohufont xbanish clipit rambox-bin siji-git spotify
+  yay -S gohufont xbanish clipit siji-git spotify
 
   cpan JSON
 
