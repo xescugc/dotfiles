@@ -28,6 +28,7 @@ printTitle "Boot loader"
 lsblk -d
 disk=$(choose "Which disk? (Ex: /dev/nvme0n1) ")
 pacman -S grub os-prober
+echo "GRUB_DISABLE_OS_PROBER=false" > /etc/default/grub
 grub-install --recheck --target=i386-pc $disk
 grub-mkconfig -o /boot/grub/grub.cfg
 
