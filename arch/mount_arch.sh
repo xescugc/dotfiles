@@ -79,7 +79,7 @@ archChroot hwclock --systohc --utc
 
 printTitle "Hostname"
 
-archChroot hostname=$(choose "Which is the hostname? ")
+hostname=$(choose "Which is the hostname? ")
 archChroot echo $hostname > /etc/hostname
 
 printTitle "Boot loader"
