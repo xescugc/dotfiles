@@ -17,11 +17,8 @@ echo ""
 echo "Installing YAY"
 
 sudo pacman -Syyu
-sudo pacman -S git
-cd /tmp
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay && makepkg -si && cd -
 
 if confirm "Installing needed packages?"
 then
