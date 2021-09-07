@@ -14,11 +14,12 @@ confirm() {
 
 echo ""
 
-echo "Installing YAY"
-
-sudo pacman -Syyu
-git clone https://aur.archlinux.org/yay.git /tmp/yay
-cd /tmp/yay && makepkg -si && cd -
+if confirm "Install YAY?"
+then
+  sudo pacman -Syyu
+  git clone https://aur.archlinux.org/yay.git /tmp/yay
+  cd /tmp/yay && makepkg -si && cd -
+fi
 
 if confirm "Installing needed packages?"
 then
@@ -41,7 +42,7 @@ then
   # For the scrot alias on i3
   mkdir $HOME/screenshoots
 
-  gpasswd -a xescugc docker
+  sudo gpasswd -a xescugc docker
   newgrp docker
 
   # Allow to run Docker commands without root

@@ -101,10 +101,10 @@ printTitle "Root Pass"
 
 archChroot passwd
 
-archChroot echo "
+archChroot sh -c "echo \"
 en_US.UTF-8 UTF-8
 en_US ISO-8859-1
-" > /etc/locale.gen
+\" > /etc/locale.gen"
 
 printTitle "Configuring Locale"
 
@@ -134,7 +134,11 @@ printTitle "Configuring newtworks"
 
 archChroot pacman --noconfirm -S dialog wpa_supplicant networkmanager
 
-archChroot sh -C "echo \"127.0.0.1  localhost
+systemctl enable NetworkManager.service
+
+archChroot touch /etc/hosts
+
+archChroot sh -c "echo \"127.0.0.1  localhost
 ::1   localhost
 127.0.1.1 $hostname\" >> /etc/hosts"
 
