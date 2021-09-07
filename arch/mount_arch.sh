@@ -130,6 +130,19 @@ printTitle "Clonning dotfiles"
 archChroot pacman --noconfirm -S git
 archChroot git clone https://github.com/xescugc/dotfiles.git /home/${username}/dotfiles
 
+printTitle "Configuring newtworks"
+
+archChroot pacman --noconfirm -S dialog wpa_supplicant
+
+ip link
+nwitf=$(choose "Which is network interface? ")
+archChroot systemctl start dhcpcd@${nwitf}
+archChroot systemctl enable dhcpcd@${nwitf}
+
+archChroot sh -C "echo \"127.0.0.1  localhost
+::1   localhost
+127.0.1.1 $hostname\" >> /etc/hosts"
+
 printTitle "Unmounting /mnt"
 
 umount -R /mnt
