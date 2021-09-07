@@ -105,7 +105,7 @@ archChroot echo KEYMAP=/usr/shared/kbd/keymaps/i386/qwerty/es.map.gz > /etc/vcon
 printTitle "Creating user"
 
 archChroot useradd -m -g users -s /bin/bash xescugc
-archChroot xescugc
+archChroot passwd xescugc
 
 archChroot pacman -S sudo
 archChroot echo "
