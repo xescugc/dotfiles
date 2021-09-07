@@ -48,6 +48,7 @@ parted $disk print
 
 printTitle "Formatting the partition"
 
+mkfs.fat -F32 ${disk}p1
 mkfs.ext4 ${disk}p2
 mkswap ${disk}p3
 swapon ${disk}p3
