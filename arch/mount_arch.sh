@@ -132,12 +132,7 @@ archChroot git clone https://github.com/xescugc/dotfiles.git /home/${username}/d
 
 printTitle "Configuring newtworks"
 
-archChroot pacman --noconfirm -S dialog wpa_supplicant
-
-ip link
-nwitf=$(choose "Which is network interface? ")
-archChroot systemctl start dhcpcd@${nwitf}
-archChroot systemctl enable dhcpcd@${nwitf}
+archChroot pacman --noconfirm -S dialog wpa_supplicant networkmanager
 
 archChroot sh -C "echo \"127.0.0.1  localhost
 ::1   localhost
