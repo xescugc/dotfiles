@@ -8,6 +8,11 @@ printTitle() {
   echo ""
 }
 
+choose() {
+  read -r -p "${1} " response
+  echo $response
+}
+
 printTitle "Timezone"
 
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
