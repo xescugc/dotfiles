@@ -39,11 +39,11 @@ disk=$(choose "Which disk do you want to partitionate? (Ex: /dev/nvme0n1) ")
 mem=$(choose "How many memory (in GiB) the rest to swap and 261MiB to EFI? (Ex: 400) ")
 
 parted $disk mklabel gpt
-parted $disk mkpart "EFI system partition" fat32 0% 261MiB
+parted $disk mkpart "efi" fat32 0% 261MiB
 #parted $disk mkpart primary ext4 0% ${mem}GiB
 parted $disk set 1 esp on
-parted $disk mkpart "root partition" ext4 261MiB ${mem}GiB
-parted $disk mkpart "swap partition" linux-swap ${mem}GiB 100%
+parted $disk mkpart "root" ext4 261MiB ${mem}GiB
+parted $disk mkpart "swap" linux-swap ${mem}GiB 100%
 parted $disk print
 
 printTitle "Formatting the partition"
