@@ -3,8 +3,11 @@
 
 set -e
 
+GREEN='\033[0;31m'
+NC='\033[0m' # No Color
+
 confirm() {
-  read -r -p "${1:-Are you sure? } [y/N]" response
+  read -r -p "${GREEN} ${1:-Are you sure? } [y/N] ${NC}" response
   case "$response" in
     [yY][eE][sS]|[yY])
       true
@@ -17,12 +20,12 @@ confirm() {
 }
 
 choose() {
-  read -r -p "${1} " response
+  read -r -p "${GREEN} ${1} ${NC}" response
   echo $response
 }
 
 printTitle() {
-  echo -e "\033[0;33m ############## $1"
+  echo -e "${GREEN} ############## $1 ${NC}"
   echo ""
 }
 
