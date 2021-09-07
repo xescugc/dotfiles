@@ -134,7 +134,7 @@ printTitle "Configuring newtworks"
 
 archChroot pacman --noconfirm -S dialog wpa_supplicant networkmanager
 
-systemctl enable NetworkManager.service
+archChroot systemctl enable NetworkManager.service
 
 archChroot touch /etc/hosts
 
