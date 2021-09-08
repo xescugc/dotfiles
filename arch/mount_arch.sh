@@ -129,6 +129,7 @@ printTitle "Clonning dotfiles"
 
 archChroot pacman --noconfirm -S git
 archChroot git clone https://github.com/xescugc/dotfiles.git /home/${username}/dotfiles
+archChroot chown -R $username /home/${username}/dotfiles
 
 printTitle "Configuring newtworks"
 

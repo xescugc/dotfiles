@@ -37,10 +37,11 @@ then
   # It may fail for the perl XML::Parser missing
   yay -S gohufont xbanish clipit siji-git spotify
 
-  cpan JSON
+  # Check why needed, maybe script for status bar i3
+  #cpan JSON
 
   # For the scrot alias on i3
-  mkdir $HOME/screenshoots
+  mkdir -p $HOME/screenshoots
 
   sudo gpasswd -a xescugc docker
   newgrp docker

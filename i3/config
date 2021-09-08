@@ -209,8 +209,8 @@ bindsym $mod+Escape mode "$mode_system"
 bar {
   #status_command exec ~/.bin/my_i3status
   #status_command ~/.bin/my_i3status
-  status_command i3status | ~/.bin/my_i3status.pl
-  #status_command i3status
+  #status_command i3status | ~/.bin/my_i3status.pl
+  status_command i3status
   tray_output none
   colors {
     background #303030
