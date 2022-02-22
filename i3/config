@@ -161,6 +161,7 @@ for_window[class="(?i)xarchiver"] floating enabled
 for_window[instance="(?i)furxvt"] floating enabled
 for_window[instance="(?i)msgcompose"] floating enabled
 for_window[instance="(?i)calendar"] floating enabled
+for_window[instance="(?i)gnomecast"] floating enabled
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

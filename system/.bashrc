@@ -33,6 +33,9 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH/bin:$PATH"
 
+# Kaleidoscope for keyboard
+export KALEIDOSCOPE_DIR=$HOME/repos/Kaleidoscope
+
 # Ruby
 # export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
@@ -72,7 +75,7 @@ wp(){
  running command \"$(echo $@)\" took $(($(date +%s) - start)) seconds to finish" -t 20000
 }
 
-pastefile() { curl -F file=@"$1" https://paste.owl.cycloid.io; }
+pastefile() { curl -F file=@"$1" https://pastefile.owl.cycloid.io; }
 
 function go() {
   case $* in

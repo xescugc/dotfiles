@@ -143,6 +143,11 @@ archChroot sh -c "echo \"127.0.0.1  localhost
 ::1   localhost
 127.0.1.1 $hostname\" >> /etc/hosts"
 
+printTitle "Enabling multilib"
+
+archChroot sh -c "echo \"[multilib]
+Include = /etc/pacman.d/mirrorlist\" >> /etc/pacman.conf"
+
 printTitle "Unmounting /mnt"
 
 umount -R /mnt

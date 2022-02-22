@@ -23,6 +23,7 @@ order += "battery 0"
 order += "battery 1"
 order += "load"
 order += "cpu_usage"
+order += "memory"
 order += "cpu_temperature 0"
 order += "tztime local"
 
@@ -76,6 +77,11 @@ load {
 
 cpu_usage {
   format = "C: %usage"
+}
+
+memory {
+  format = "M: %percentage_used"
+  threshold_critical = "15%"
 }
 
 cpu_temperature 0 {
